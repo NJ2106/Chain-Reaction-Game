@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-mongoose.plugin(require('mongoose-ref-validator'));
+var refValidator=require('mongoose-ref-validator');
 var User=require('./user');
 
 var Schema = mongoose.Schema;
@@ -23,7 +23,7 @@ var BoardSchema=new Schema({
         default : null
     }
 });
-
+BoardSchema.plugin(refValidator);
 
    var Board = mongoose.model('Board', BoardSchema,'board');
    module.exports=Board;
