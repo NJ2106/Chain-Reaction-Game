@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <title>BOARD</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <div style="float: right">
+            <button class="btn btn-danger" type="button" onclick="forfeitGame()">Forfeit Game</button>
+            <a href="/profile" class="btn btn-info"><span class="glyphicon glyphicon-user"></span><span id="usernameId"><%= username %></span> </a>
+            <a href="/logout" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
+        </div>
+        <button class="btn btn-primary" type="button" onclick="refreshBoard()">Refresh</button>
+    </div>
+
+
+
+    <div class="row" style="margin-top: 5%">
+        <div class="col-md-6">
+            <div class="alert alert-info">
+                <h2 id ="boardNameId"></h2>
+                <h4 id="activePlayersId"></h4>
+                <h4 id="boardStatusId"></h4>
+                <h4 id="myTurnID"></h4>
+                <h4 id="timerId"></h4>
+            </div>
+
+            <br>
+            <div>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Cell Color</th>
+                        <th>Points</th>
+                        <th>Moves Left</th>
+                        <th>Winner</th>
+                    </tr>
+                    </thead>
+                    <tbody id="usersTableId">
+                    </tbody>
+                </table>
+            </div>
+            <!-- <h4>Click on Start Button to start the game.</h4> -->
+            <button class="btn btn-primary" type="button" onclick="startGame()">Start The Game!</button>
+            <h4 style="background-color: red" id="errorMsgId"></h4>
+            <h4 style="background-color: Chartreuse" id="finishedGameId"></h4>
+        </div>
+    </div>
+
+    <div class="row" id="block-row" style="margin-top: 10%; padding-bottom: 50px">
+    </div>
+
+</div>
+</body>
+</html>
