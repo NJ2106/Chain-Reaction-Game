@@ -5,6 +5,7 @@ const User=require('../app/models/user');
 const PlayMove =require('../app/models/PlayMoves');
 const Board=require('../app/models/boardCollection');
 const assert=require('assert');
+const BoardPlayers=require('../app/models/BoardPlayersCollection');
 
 describe('saving records to a database',function () {
     var board;
@@ -37,4 +38,32 @@ describe('saving records to a database',function () {
         });
 
     });
+
+    it('should find records', function () {
+
+        Board.find({board_name:'katta'}).then((user)=>{
+            assert(user.length=== 1);
+            done();
+        });
+    });
+    it('should save in boardPlayers',function () {
+        BoardPlayers
+    })
+
+    it('lookup passes',function () {
+        Board.aggregate([
+            {$match:{board_name:'Srinivas'}},
+
+            {
+
+                $lookup:
+                    {
+                        from:BoardPlayers,
+                        localField:"board_id",
+                        foreignField:"board_id",
+                        as:"docs"
+                    }
+            }
+        ])
+    })
 });

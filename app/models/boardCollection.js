@@ -1,16 +1,22 @@
 var mongoose=require('mongoose');
 var refValidator=require('mongoose-ref-validator');
 var User=require('./user');
+var sanitize=require('mongoose-sanitizer');
 
 var Schema = mongoose.Schema;
 var BoardSchema=new Schema({
-    board_id:{
-        type : mongoose.Schema.Types.ObjectId,
-        required : true
-    },
     board_name:{
         type:String,
-        required:true
+        required:true,
+        unique:true,
+        //sparse:true
+
+    },
+    player:{
+        type:Schema.Types.ObjectId,ref:'BoardPlayers',required:true
+    },
+    board_status:{
+        type:String
     },
     starttime:{
         date:Date
@@ -24,6 +30,6 @@ var BoardSchema=new Schema({
     }
 });
 BoardSchema.plugin(refValidator);
-
+    //BoardSchema.plugin(sanitize);
    var Board = mongoose.model('Board', BoardSchema,'board');
    module.exports=Board;
