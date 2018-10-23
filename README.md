@@ -1,1 +1,1 @@
-# Quartetto Board Game
+# Chain Reaction Game
